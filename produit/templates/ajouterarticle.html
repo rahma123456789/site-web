@@ -1,0 +1,170 @@
+
+{% extends "titre.html" %}
+
+  
+{% block content %} 
+{% load static %}
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></head>
+<body>
+ 
+<h1>Ajouter un article</h1>
+<form action ="." method="post">
+  {% include 'messages.html'%}
+  {% csrf_token %}
+  
+  <div class="form-group">
+    <label for="des_art">des_art</label>
+    <input type="nom" name="des_art" class="form-control" id="des_art"  placeholder="entrer la désignation de l'article">
+    
+  </div>
+  
+  <div class="form-group">
+    <label for="code_famille">code famille</label>
+    <input type="text" name="code_famille" class="form-control" id="code_famille"  placeholder="entrer le code famille">
+ </div>
+  <div class="form-group">
+    <label for="COD_ART">COD_ART</label>
+    <input type="nom" name="COD_ART" class="form-control" id="COD_ART"  placeholder="entrer le code article">
+    
+  </div>
+  <div class="form-group">
+    <label for="COD_BAR_FAB">COD_BAR_FAB</label>
+    <input type="nom" name="COD_BAR_FAB" class="form-control" id="COD_BAR_FAB"  placeholder="entrer le code a barre fabriquation">
+    
+  </div>
+  <div class="form-group">
+    <label for="COD_BAR_INT">COD_BAR_INT</label>
+    <input type="nom" name="COD_BAR_INT" class="form-control" id="COD_BAR_INT"  placeholder="entrer le code a bare initial">
+    
+  </div>
+  <div class="form-group">
+    <label for="Taux_TVA">Taux_TVA</label>
+    <input type="nom" name="Taux_TVA" class="form-control" id="Taux_TVA"  placeholder="entrer le taux TVA">
+    
+  </div>
+  <div class="form-group">
+    <label for="unité">unité</label>
+    <input type="nom" name="unité" class="form-control" id="unité"  placeholder="entrer unité">
+    
+  </div>
+  <div class="form-group">
+    <label for="qte_stock">qte_stock</label>
+    <input type="nom" name="qte_stock" class="form-control" id="qte_stock"  placeholder="entrer la quantité de stock">
+    
+  </div>
+  <div class="form-group">
+    <label for="qte_prmotion">qte_prmotion</label>
+    <input type="nom" name="qte_prmotion" class="form-control" id="qte_prmotion" placeholder="entrer quantité de promotion">
+    
+  </div>
+  <div class="form-group">
+    <label for="prix_vente_promotion">prix_vente_promotion</label>
+    <input type="nom" name="prix_vente_promotion" class="form-control" id="prix_vente_promotion"  placeholder="entrer le code famille">
+    
+  </div>
+  <div class="form-group">
+    <label for="prix_vente_ht">prix_vente_ht</label>
+    <input type="nom" name="prix_vente_ht" class="form-control" id="prix_vente_ht"  placeholder="entrer le prix de vente ht">
+    
+  </div>
+  <div class="form-group">
+    <label for="qte_emballage">qte_emballage</label>
+    <input type="nom" name="qte_emballage" class="form-control" id="qte_emballage"  placeholder="entrer la quantité d'emballage">
+    
+  </div>
+  <div class="form-group">
+    <label for="prix_vente_ttc">prix_vente_ttc</label>
+    <input type="nom" name="prix_vente_ttc" class="form-control" id="prix_vente_ttc"  placeholder="entrer le prix de vente ttc">
+    
+  </div>
+  <div class="form-group">
+    <label for="photo">photo</label>
+    <input type="nom" name="photo" class="form-control" id="photo"  placeholder="entrer le code famille">
+    
+  </div>
+  <div class="form-group">
+    <label for="avec_fodec">avec_fodec</label>
+    <input type="nom" name="avec_fodec" class="form-control" id="avec_fodec"  placeholder="entrer le code famille">
+    
+  </div>
+  <div class="form-group">
+    <label for="qte_encours">qte_encours</label>
+    <input type="nom" name="qte_encours" class="form-control" id="qte_encours"  placeholder="entrer le code famille">
+    
+  </div>
+  <div class="form-group">
+    <label for="description">description</label>
+    <input type="nom" name="description" class="form-control" id="description"  placeholder="entrer une description">
+    
+  </div>
+  <div class="form-group">
+    <label for="poids">poids</label>
+    <input type="nom" name="poids" class="form-control" id="poids"  placeholder="entrer le poids">
+    
+  </div>
+  <div class="form-group">
+    <label for="unite_cart">unite_cart</label>
+    <input type="nom" name="unite_cart" class="form-control" id="unite_cart"  placeholder="entrer unité cattonnage">
+    
+  </div>
+  <div class="form-group">
+    <label for="categorie">categorie</label>
+    <input type="nom" name="categorie" class="form-control" id="categorie"  placeholder="entrer catégorie">
+    
+  </div>
+  <div class="form-group">
+    <label for="marque">marque</label>
+    <input type="nom" name="marque" class="form-control" id="marque"  placeholder="entrer marque">
+    
+  </div>
+  <div class="form-group">
+    <label for="preferentiel">preferentiel</label>
+    <input type="nom" name="preferentiel" class="form-control" id="preferentiel"  placeholder="entrer préférentiel">
+    
+  </div>
+  <div class="form-group">
+    <label for="pub_web">pub_web</label>
+    <input type="nom" name="pub_web" class="form-control" id="pub_web"  placeholder="entrer pub web">
+    
+  </div>
+  <div class="form-group">
+    <label for="code_gfamille">code_gfamille</label>
+    <input type="nom" name="code_gfamille" class="form-control" id="code_gfamille"  placeholder="entrer le code famille">
+    
+  </div>
+  <div class="form-group">
+    <label for="remise_vente">remise_vente</label>
+    <input type="nom" name="remise_vente" class="form-control" id="remise_vente"  placeholder="entrer remise de vente">
+    
+  </div>
+  <div class="form-group">
+    <label for="date_modification">date_modification</label>
+    <input type="nom" name="date_modification" class="form-control" id="date_modification"  placeholder="entrer la date de modification">
+    
+  </div>
+  <div class="form-group">
+    <label for="reliquat">reliquat</label>
+    <input type="nom" name="reliquat" class="form-control" id="reliquat"  placeholder="entrer reliquat">
+    
+  </div>
+  <div class="form-group">
+    <label for="marge">marge</label>
+    <input type="nom" name="marge" class="form-control" id="marge"  placeholder="entrer marge">
+    
+  </div>
+  <div class="form-group">
+    <label for="casier">casier</label>
+    <input type="nom" name="casier" class="form-control" id="casier"  placeholder="entrer casier">
+    
+  </div>
+  <button type="submit" class="btn btn-primary">save</button>
+  <button type="submit" class="btn btn-success">modifier</button>
+  <button type="submit" class="btn btn-danger">supprimer</button>
+ 
+</form>
+</body>
+</html>
+    
+{% endblock content %}

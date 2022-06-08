@@ -1,0 +1,229 @@
+
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>
+        $(document).ready(function(){
+            var total;
+            var somme=0;
+            $('td:nth-child(9)').each(function(){
+            total=$(this).html();
+            somme+=parseFloat( total) ;
+            $('#sommetotal').text(somme);
+            });
+        });
+    </script>
+  
+  <script>
+    $(document).ready(function(){
+        var quantity;
+        var somme=0;
+        $('td:nth-child(1)').each(function(){
+			quantity=$(this).html();
+        somme+=parseInt( quantity) ;
+        $('#sommeqt').text(somme);
+        });
+    });
+</script>
+<style>input[type=nom] {
+    width: 150%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    color: #000;
+  }
+ 
+ 
+  input[type=nom]:focus {
+    border-color:withe;
+  }
+  input[type=ab] {
+    width: 60px;
+    height: 40%;
+    padding: 10px 10px;
+   
+    box-sizing: border-box;
+    border: none;
+    background-color: white;
+    color:rgb(18, 155, 102);
+  }
+  input[type=text] {
+    width: 188px;
+    height: 50%;
+    padding: 12px 15px;
+   
+    box-sizing: border-box;
+    border: none;
+    background-color: white;
+    color:black;
+  }
+  .section-title h2::before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 50px;
+    background: #D4AC0D;
+    left: 50%;
+    bottom: 0;
+    margin-left: -25px;
+}
+  </style></head>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="/eshop/">Acceuil<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="blog-single.html">Mon panier</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- End Breadcrumbs -->
+        
+<div class="section-title">
+    <h2>Votre panier</h2></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form id="frm1" method="post">
+                    {% csrf_token %}
+                <table class="table shopping-summery">
+                    <thead>
+                        <tr class="main-hading">
+                            <th>Article</th>
+                            <th>Code article</th>
+                            <th class="text-center">Quantité</th>
+                            <th class="text-center">Prix HT</th>
+                            <th class="text-center">Remise </th>
+                            <th class="text-center">TVA %</th>
+                            <th class="text-center">Prix TTC</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">TOTAL</th> 
+                            <th class="text-center"><a href=" {%  url 'supprimerall' %}"><i class="fa fa-remove" style="font-size:24px"></i></a>  </th>
+                        </tr>
+                    </thead>
+                    
+                   
+                        {% if  request.user %}
+                        {% for omar in aa %}
+                        {% include 'messages.html'%}
+                               
+                        <tbody>  
+
+
+                        <tr>
+                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" " alt="#"></td>
+                            <td class="product-des" data-title="Description">
+                                <input type="nom" class="nom" readonly id="COD_ART"name="COD_ART" value=  {{omar.COD_ART}}>
+      
+                        
+                            </td>
+                            
+                            <td  style="color:rgba(255, 255, 255, 0);font-size:5px;"> {{omar.quantité}} <input type="number" style="width: 100px;"  min="1" class="quantité"id="quantité"  name="quantité" placeholder="Entrer quantité" value={{omar.quantité}}  > </td>
+                            <td >  <input type="nom" class="nom" readonly id="prix_vente_ht"name="prix_vente_ht" value={{omar.prix_vente_ht}}></td>
+                            <td><input type="nom" class="nom" readonly id="prix_vente_promotion"name="prix_vente_promotion" value="{{omar.prix_vente_promotion}}"></td>
+                            
+                             
+                            </td>
+                           
+                            <td> <input type="nom" class="nom" readonly id="taux_tva"name="taux_tva" value={{art.taux_tva}}></td>
+                            <td><input type="nom" class="nom" readonly id="prix_vente_ttc"name="prix_vente_ttc" value={{art.prix_vente_ttc}}></td>
+                         
+                            <td >
+                                <input id="date" readonly type="text" name="date" value=  "{{omar.date}}">
+      
+                        
+                            </td>
+                           <td  style="color:rgb(18, 155, 102);font-size:15px;"> {{omar.total}}<p  style="color:rgb(18, 155, 102);font-size:15px;">dinars</p><input style="background-color:rgb(255, 255, 255) ;border: none;color:rgb(255, 255, 255) ;width:10px" type="aa" class="aa" readonly id="total"name="total" value={{omar.total}}> </td>
+                           
+                           <td >  <a href="  {%  url 'supprimercommande' omar.id %}" onclick="confirmer()">
+                                
+                                <i class="fa fa-remove" style="font-size:24px"></i>
+                              </a></td>
+                               
+                        </tr>
+                        
+                    </tbody>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+             
+              
+                <!--/ End Shopping Summery -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Total Amount -->
+                <div class="total-amount">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-5 col-12">
+                            <div class="left">
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-7 col-12">
+                            <div class="right">
+                                <ul>
+                                    {% if  request.user %}
+                                    {% for omar in aa %}
+                                    <li style="color:black;font-size:15px;">Montant HT<span  style="color:rgb(131, 0, 0);  word-spacing: 25px;font-weight: bold;;font-size:15px;" id="#sommeht">   </span></li><br>
+                                    
+                              
+                                    <li style="color:black;font-size:15px;">Montant TVA&emsp;<span  style="color:rgb(131, 0, 0); font-weight: bold;;font-size:15px;">     {{art.taux_tva}}</span></li><br>
+                                    <li style="color:black;font-size:15px;">Montant TTC<span  style="color:rgb(131, 0, 0);word-spacing: 15px; font-weight: bold;font-size:15px;">  {{omar.total}}</span> dinars</li>
+                                   
+                                   
+                                    {% endfor %}
+                               
+                                </ul>
+                              
+                                <div class="button5">
+                                    <button class="btn" type="submit"  >Valider votre commande</button>
+                                   
+                                </div>
+                                {% endif %}
+                            </div>
+                        
+                        </div>
+                      
+                    </div>
+                </div>
+                
+            </form>
+                <!--/ End Total Amount -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function confirmer(){
+    var res = confirm("Êtes-vous sûr de vouloir supprimer?");
+    if(res){
+        // Mettez ici la logique de suppression
+    }
+}
+</script>
+
+<script>
+    $(document).ready(function(){
+        var quantity;
+        var somme=0;
+        $('td:nth-child(1)').each(function(){
+			quantity=$(this).html();
+        somme+=parseInt( quantity) ;
+        $('#sommeqt').text(somme);
+        });
+    });
+</script>
+{%endblock%}

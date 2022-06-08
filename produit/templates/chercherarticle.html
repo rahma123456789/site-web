@@ -1,0 +1,51 @@
+
+  
+      {% extends "titre.html" %}
+      
+      {% block content %} 
+  <form method="get">
+    {{filter.form}} <br>
+  <button class="btn btn-primary" type="submit">search</button>
+  
+  </form>
+  
+  <table class="table table-striped table-hover">
+    <tr>
+      <td><b>Code famille</td>
+      <td><b>Designation article</td>
+      <td><b>code article</td>
+    </tr>
+      <center>
+      {% if q1 %}
+     
+  
+    {% for omar in q1 %}
+    
+      <tr><a href="ajouterarticle.html">
+      <td>
+        {{omar.code_famille}}
+      </td>
+     
+        
+        
+    <td> {{omar.des_art}}</td>
+    <td> {{omar.cod_art}} </td>
+  </a>
+   <tr>
+  
+  
+     
+     
+    {% endfor %}
+    {% else %}
+    Data is empty
+    {% endif%}	
+  </center>
+
+  </tr>
+
+  </tr>
+  </table>
+  
+  
+  {% endblock content %}

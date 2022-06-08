@@ -1,0 +1,133 @@
+{% load static %}
+<html>
+<head>
+    <style>@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+
+        body{
+            background-image: url("https://img.freepik.com/photos-gratuite/pilote-habille-costume-elegant_23-2149184251.jpg?t=st=1651740277~exp=1651740877~hmac=fa997f1983699ab72d8d46e2fde88c12541f6e1f5b025d1c30acc9775676e2ad&w=740");
+            background-position: center;
+            background-origin: content-box;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height:100vh;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        .text-center{
+            color:#fff;	
+            text-transform:uppercase;
+            font-size: 23px;
+            margin: -50px 0 80px 0;
+            display: block;
+            text-align: center;
+        }
+        .box{
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            background-color: rgba(0, 0, 0, 0.89);
+            border-radius:3px;
+            padding:70px 100px;
+        }
+        .input-container{
+            position:relative;
+            margin-bottom:25px;
+        }
+        .input-container label{
+            position:absolute;
+            top:0px;
+            left:0px;
+            font-size:16px;
+            color:#fff;	
+            
+            transition: all 0.5s ease-in-out;
+        }
+        .input-container input{ 
+          border:0;
+          border-bottom:1px solid #555;  
+          background:transparent;
+          width:100%;
+          padding:8px 0 5px 0;
+          font-size:16px;
+          color:#fff;
+        }
+        .input-container input:focus{ 
+         border:none;	
+         outline:none;
+         border-bottom:1px solid #e74c3c;	
+        }
+        .btn{
+            color:#fff;
+            background-color:rgb(230, 151, 5);
+            outline: none;
+            border: 0;
+            color: #fff;
+            padding:10px 20px;
+            text-transform:uppercase;
+            margin-top:50px;
+            border-radius:2px;
+            cursor:pointer;
+            position:relative;
+        }
+        /*.btn:after{
+            content:"";
+            position:absolute;
+            background:rgba(0,0,0,0.50);
+            top:0;
+            right:0;
+            width:100%;
+            height:100%;
+        }*/
+        .input-container input:focus ~ label,
+        .input-container input:valid ~ label{
+            top:-12px;
+            font-size:12px;
+            
+        }
+        </style>
+</head>
+<body>
+    <div class="box">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{forms.erros}}
+        <div class="container">
+            <h1 style="color:rgb(255, 255, 255)">S'inscrire</h1>
+            <p style="color:rgb(255, 255, 255)">Veuillez remplir ce formulaire pour créer un
+      
+              Compte.</p>
+            <hr>
+            <div class="input-container">
+            <label for="nom"><b>nom</b></label><br>
+            {{form.username}}
+        </div>
+            <br>
+            <div class="input-container">
+            <label for="text"><b>Email</b></label>
+            <br>
+               {{ form.email }}
+        </div>
+            <br>
+            <div class="input-container">
+            <label for="psw"><b>Mot de passe</b></label><br>
+            {{form.password1}}
+        </div>
+            <br>
+            <div class="input-container">
+            <label for="psw-repeat"><b>Répéter mot de passe</b></label><br>
+            {{form.password2}}
+            
+        </div>
+      
+            
+            {{form.errors}}
+            <div class="clearfix">
+              
+              <button type="button"  class="btn" onclick="window.location.href='/login'">Cancel</button>
+              <button type="submit" class="btn">S'inscrire</button>
+            </div>
+          </div>
+        </form>
+</div>
+</body>
+</html>
