@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<head>
+<style>
+.breadcrumbs ul li a:hover{
+	color:#FAF30A;
+}
+.section-title h2::before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 50px;
+    background: #FAF30A;
+    left: 50%;
+    bottom: 0;
+    margin-left: -25px;
+}
+.p{color: #333;font-size:20px;}
+
+</style>
+</head>
+<section>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="/eshop/">Acceuil<img  style="width: 10px;" src="{%   static 'images/fleche.png'  %}"> </a></li>
+                        <li ><a href="">Présentation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="section-title">
+    <h2>SOCOMER</h2>
+    </div>
+    <div>
+    <center>
+<p style="color: #333;font-size:18px;">SOCOMER offre a sa clientéle un large choix et nombre de piéces de rechanges autmobiles en gros .<br>Des piéces de rechanges automobiles sont disponibles sur le site : origines ou équivalents .<br><br> </p>
+</center></div>
+</section>
+{% endblock %}
