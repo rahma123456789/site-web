@@ -1,0 +1,11 @@
+@media (min-width: 1025px) {
+    .h-custom {
+      height: 100vh !important;
+    }
+    
+  }
+  body
+    {
+        background-color: rgb(126, 152, 170);
+       
+    }
