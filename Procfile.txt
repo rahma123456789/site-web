@@ -1,1 +1,1 @@
-web: gunicorn dashboard.app:server --pythonpath=dashboard
+web: gunicorn monsite.app:server --pythonpath=monsite
